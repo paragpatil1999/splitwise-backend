@@ -1,0 +1,19 @@
+{
+  "name": "splitwise-backend",
+  "version": "1.0.0",
+  "description": "Splitwise backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paragpatil1999/splitwise-backend.git"
+  },
+  "author": "paragpatil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paragpatil1999/splitwise-backend/issues"
+  },
+  "homepage": "https://github.com/paragpatil1999/splitwise-backend#readme"
+}
