@@ -14,7 +14,7 @@ variables:
   imageRepository: 'paragpatilsplitwisebackend'
   containerRegistry: 'splitwiseappcontainerregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  tag: '$(Build.BuildId)'
+  tag: 'latest'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
