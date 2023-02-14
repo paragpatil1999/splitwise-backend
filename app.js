@@ -31,6 +31,7 @@ else if (!config.get('MongoDBPassword')) {
   console.error('FATAL ERROR: MongoDBPassword is not defined.');
   process.exit(1);
 }
+// checking CI pipeline
 
 const dbUrl = `mongodb+srv://${config.get('MongoDBUserName')}:${config.get('MongoDBPassword')}@splitwise.eneyypj.mongodb.net/SplitWiseDev?retryWrites=true&w=majority`;
 
