@@ -1,23 +1,14 @@
-# Use an existing image as the base image
 FROM node:18.14.0-alpine
-
-# Set the working directory
-WORKDIR /app
-
-# Copy the package.json and package-lock.json files to the container
+# Create app directory
+WORKDIR /usr/src/app
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
 COPY package*.json ./
-
-# Install the dependencies
 RUN npm install
-
-# Copy the rest of the application files to the container
+# If you are building your code for production
+# RUN npm install --only=production
+# Bundle app source
 COPY . .
-
-# Set the environment variables (if any)
-ENV NODE_ENV production
-
-# Expose the port on which your application is running
-EXPOSE 8080
-
-# Command to run when the container starts
+EXPOSE 8000
 CMD [ "npm", "start" ]
