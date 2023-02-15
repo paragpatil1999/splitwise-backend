@@ -4,12 +4,15 @@ import mongoose from 'mongoose';
 import config from 'config';
 import { OAuth2Client } from 'google-auth-library';
 import limiter from './middleware/rateLimiter.js';
-import User from './models/user.js';
+import session from 'express-session';
+const store = new session.MemoryStore();
 // const register = require('./routes/register');
 // const auth = require('./routes/auth');
 // const users = require('./routes/users');
 // const indexRoute = require('./routes/index');
 import indexRoute from './routes/index.js';
+import register from './routes/register.js';
+import login from './routes/login.js';
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -41,14 +44,22 @@ mongoose.connect(dbUrl, options, (err) => {
 });
 
 
-
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 3000 },
+  cookie: { secure: true },
+  store: store
+}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(limiter);
 
 app.use('/', indexRoute);
-// app.use('/api/register', register);
-// app.use('/api/auth', auth);
+app.use('/api/register', register);
+app.use('/api/login', login);
 // app.use('/api/users', users);
 
 app.listen(port, (req, res) => {

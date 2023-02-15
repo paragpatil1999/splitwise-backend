@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
         maxlength: 255,
         unique: true
     },
-    password: {
+    UpiID: {
         type: String,
         required: true,
         minlength: 5,
@@ -23,26 +23,18 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+let UserModel = {};
+UserModel.User = mongoose.model('User', userSchema);
 
-const User = mongoose.model('User', userSchema);
-
-function validateUser(user) {
+UserModel.validate = function validateUser(user) {
     const schema = new Joi.object({
         name: Joi.string().min(5).max(255).required(),
         email: Joi.string().min(5).max(255).required().email(),
-        password: Joi.string().min(5).max(1024).required()
+        UpiID: Joi.string().min(5).max(255).required()
     });
 
     return schema.validate(user);
 }
 
-let exportVar = {}
-exportVar.User = User;
-exportVar.validate = validateUser;
 
-export default exportVar;
-
-// exports.User = User;
-// exports.validate = validateUser;
-
-// export default User;
+export default UserModel;
