@@ -11,45 +11,19 @@ import User from './models/user.js';
 // const indexRoute = require('./routes/index');
 import indexRoute from './routes/index.js';
 
-
-
 const app = express();
 const port = process.env.PORT || 8000;
 
-
-
-
-// if (!config.get('jwtPrivateKey')) {
-//   console.error('FATAL ERROR: jwtPrivateKey is not defined.');
-//   process.exit(1);
-// }
-// if (!config.get('MongoDBUserName')) {
-//   // config.set('MongoDBUserName', 'test');
-//   // console.error('FATAL ERROR: MongoDBUserName is not defined.');
-//   // process.exit(1);
-// }
-// else if (!config.get('MongoDBPassword')) {
-//   //   config.set('MongoDBPassword', 'test');
-//   //   console.error('FATAL ERROR: MongoDBPassword is not defined.');
-//   //   process.exit(1);
-// }
-if (config.has('MongoDBUserName')) {
-  console.log('MongoDBUserName is defined');
+if (!config.get('MongoDBUserName')) {
+  console.error('FATAL ERROR: MongoDBUserName is not defined.');
+  process.exit(1);
 }
-else {
-  console.log('MongoDBUserName is not defined');
-}
-if (config.has('MongoDBPassword')) {
-  console.log('MongoDBPassword is defined');
-}
-else {
-  console.log('MongoDBPassword is not defined');
+if (!config.get('MongoDBUserName')) {
+  console.error('FATAL ERROR: MongoDBUserName is not defined.');
+  process.exit(1);
 }
 
-let mongoUserName = config.has('MongoDBUserName') ? config.get('MongoDBUserName') : 'test';
-let mongoPassword = config.has('MongoDBPassword') ? config.get('MongoDBPassword') : 'test';
-
-const dbUrl = `mongodb+srv://${mongoUserName}:${mongoPassword}@splitwise.eneyypj.mongodb.net/SplitWiseDev?retryWrites=true&w=majority`;
+const dbUrl = `mongodb+srv://${config.get('MongoDBUserName')}:${config.get('MongoDBPassword')}@splitwise.eneyypj.mongodb.net/SplitWiseDev?retryWrites=true&w=majority`;
 
 const options = {
   keepAlive: true,
