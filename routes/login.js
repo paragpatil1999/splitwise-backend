@@ -7,7 +7,7 @@ import auth from '../middleware/auth.js';
 
 router.post('/', async (req, res) => {
     try {
-        if (req.session.isLoggedIn) return res.status(400).send('Already logged in', req.session);
+        if (req.session.isLoggedIn) return res.status(400).send('Already logged in', req.session).toString();
         const { error } = validate(req.body);
         if (error) return res.status(400).send(error.details[0].message);
         // validate user
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        res.status(500).send('Something went wrong');
+        res.status(500).send('Something went wrong').toString();
     }
 });
 

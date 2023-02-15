@@ -20,10 +20,9 @@ router.post('/', async (req, res) => {
         req.session.user = user._id;
         req.session.isLoggedIn = true;
         console.log(req.session);
-        req.save();
     } catch (error) {
         console.log(error);
-        return res.status(500).send('Something went wrong');
+        return res.status(500).send('Something went wrong').toString();
     }
 });
 
