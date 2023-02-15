@@ -33,11 +33,19 @@ const port = process.env.PORT || 8000;
 //   //   console.error('FATAL ERROR: MongoDBPassword is not defined.');
 //   //   process.exit(1);
 // }
-// if (config.has('MongoDBUserName') && config.has('MongoDBPassword')) {
-//   console.log('MongoDBUserName and MongoDBPassword are defined');
-// } else {
-//   console.log('MongoDBUserName and MongoDBPassword are not defined');
-// }
+if (config.has('MongoDBUserName')) {
+  console.log('MongoDBUserName is defined');
+}
+else {
+  console.log('MongoDBUserName is not defined');
+}
+if (config.has('MongoDBPassword')) {
+  console.log('MongoDBPassword is defined');
+}
+else {
+  console.log('MongoDBPassword is not defined');
+}
+
 let mongoUserName = config.has('MongoDBUserName') ? config.get('MongoDBUserName') : 'test';
 let mongoPassword = config.has('MongoDBPassword') ? config.get('MongoDBPassword') : 'test';
 
