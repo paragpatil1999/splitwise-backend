@@ -38,7 +38,6 @@ const port = process.env.PORT || 8000;
 // } else {
 //   console.log('MongoDBUserName and MongoDBPassword are not defined');
 // }
-// checking CI pipeline 1
 let mongoUserName = config.has('MongoDBUserName') ? config.get('MongoDBUserName') : 'test';
 let mongoPassword = config.has('MongoDBPassword') ? config.get('MongoDBPassword') : 'test';
 
