@@ -64,6 +64,12 @@ app.use('/api/login', login);
 app.use('/api/groups', groups);
 // app.use('/api/users', users);
 
+//health check
+app.get('/v1/healthcheck', (req, res) => {
+  res.send('OK');
+});
+
+
 app.listen(port, (req, res) => {
   console.log(`server listening on port: ${port}`);
 });
