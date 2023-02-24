@@ -13,6 +13,7 @@ const store = new session.MemoryStore();
 import indexRoute from './routes/index.js';
 import register from './routes/register.js';
 import login from './routes/login.js';
+import groups from './routes/groups.js';
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -50,7 +51,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 3000 },
-  cookie: { secure: true },
+  cookie: { secure: false },
   store: store
 }))
 app.use(logger('dev'));
@@ -60,6 +61,7 @@ app.use(limiter);
 app.use('/', indexRoute);
 app.use('/api/register', register);
 app.use('/api/login', login);
+app.use('/api/groups', groups);
 // app.use('/api/users', users);
 
 app.listen(port, (req, res) => {
