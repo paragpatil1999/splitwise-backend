@@ -65,7 +65,7 @@ app.use('/api/groups', groups);
 // app.use('/api/users', users);
 
 //health check
-app.get('/v1/healthcheck', (req, res) => {
+app.get('/v1/health', (req, res) => {
   res.send('OK');
 });
 
