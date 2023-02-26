@@ -6,14 +6,9 @@ import { OAuth2Client } from 'google-auth-library';
 import limiter from './middleware/rateLimiter.js';
 import session from 'express-session';
 const store = new session.MemoryStore();
-// const register = require('./routes/register');
-// const auth = require('./routes/auth');
-// const users = require('./routes/users');
-// const indexRoute = require('./routes/index');
 import indexRoute from './routes/index.js';
-import register from './routes/register.js';
-import login from './routes/login.js';
 import groups from './routes/groups.js';
+import users from './routes/users.js';
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -51,7 +46,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 3000 },
-  cookie: { secure: false },
+  cookie: { secure: false },//TODO: change to true
   store: store
 }))
 app.use(logger('dev'));
@@ -59,10 +54,8 @@ app.use(express.json());
 app.use(limiter);
 
 app.use('/', indexRoute);
-app.use('/api/register', register);
-app.use('/api/login', login);
 app.use('/api/groups', groups);
-// app.use('/api/users', users);
+app.use('/api/users', users);
 
 //health check
 app.get('/v1/health', (req, res) => {
