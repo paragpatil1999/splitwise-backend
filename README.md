@@ -6,7 +6,7 @@
 
 ### 1. /register - register a new user
 
-#### POST http://localhost:8000/api/users/register
+#### POST https://splitwiseapp.azurewebsites.net/api/users/register
 
 #### body:
 
@@ -20,7 +20,7 @@
 
 ### 2. /login - login a user
 
-#### POST http://localhost:8000/api/users/login
+#### POST https://splitwiseapp.azurewebsites.net/api/users/login
 
 #### body:
 
@@ -32,19 +32,19 @@
 
 ### 3. /logout - logout a user
 
-#### POST http://localhost:8000/api/users/logout
+#### POST https://splitwiseapp.azurewebsites.net/api/users/logout
 
 ### 4. /me - get details of logged in user
 
-#### GET http://localhost:8000/api/users/me
+#### GET https://splitwiseapp.azurewebsites.net/api/users/me
 
 ### 5. /all - get details of all users
 
-#### GET http://localhost:8000/api/users/all
+#### GET https://splitwiseapp.azurewebsites.net/api/users/all
 
 ### 6. /addFriends - add friends to logged in user
 
-#### POST http://localhost:8000/api/users/addFriends
+#### POST https://splitwiseapp.azurewebsites.net/api/users/addFriends
 
 #### body:
 
@@ -58,7 +58,7 @@
 
 ### 1. /create - create a new group
 
-#### POST http://localhost:8000/api/groups/create
+#### POST https://splitwiseapp.azurewebsites.net/api/groups/create
 
 #### body:
 
@@ -71,11 +71,11 @@
 
 ### 2. /all - get details of all groups
 
-#### GET http://localhost:8000/api/groups/all
+#### GET https://splitwiseapp.azurewebsites.net/api/groups/all
 
 ### 3. /addMembers - add members to a group
 
-#### POST http://localhost:8000/api/groups/addMembers
+#### POST https://splitwiseapp.azurewebsites.net/api/groups/addMembers
 
 #### body:
 
@@ -88,13 +88,13 @@
 
 ### 4. /:id - get details of a group by id
 
-#### GET http://localhost:8000/api/groups/12345
+#### GET https://splitwiseapp.azurewebsites.net/api/groups/12345
 
 ## Transactions
 
 ### 1. /create - create a new transaction
 
-#### POST http://localhost:8000/api/transactions/create
+#### POST https://splitwiseapp.azurewebsites.net/api/transactions/create
 
 #### body:
 
