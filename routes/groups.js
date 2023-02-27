@@ -115,7 +115,7 @@ router.get('/:id', auth, async (req, res) => {
     }
 });
 
-router.post('/', auth, async (req, res) => {
+router.post('/create', auth, async (req, res) => {
     try {
         const { error } = GroupModel.validate(req.body);
         if (error) return res.status(400).send(error.details[0].message);
@@ -132,6 +132,19 @@ router.post('/', auth, async (req, res) => {
 
         let group = createGroup(_.pick(req.body, ['name', 'members']));
         return res.status(group.statusCode).send(group.message);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send('Something went wrong').toString();
+    }
+});
+
+router.post('/addMembers', auth, async (req, res) => {
+    try {
+        const { error } = GroupModel.validate(req.body);
+        if (error) return res.status(400).send(error.details[0].message);
+
+        let result = await addMembersToGroup(req.body.groupId, req.body.members);
+        return res.status(result.statusCode).send(result.message);
     } catch (error) {
         console.log(error);
         return res.status(500).send('Something went wrong').toString();

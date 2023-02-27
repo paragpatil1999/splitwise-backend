@@ -37,7 +37,6 @@ UserModel.validate = function validateUser(user) {
         name: Joi.string().min(5).max(255).required(),
         email: Joi.string().min(5).max(255).required().email(),
         UpiID: Joi.string().min(5).max(255).required(),
-        //Friendswith: Joi.array().min(0).max(255).required()
     });
 
     return schema.validate(user);
